@@ -4,7 +4,7 @@ Suitable for proteomics, metabolomics and lipidomics workflows.
 
 Check out the demo version <a href="https://analyst-suites.org/apps/qc-demo/" target="_blank" rel="noopener noreferrer">here</a>
 
-__NOTE__: Repository and download links are _private_ pending 2025 release and research manuscript. Chack back soon.
+__NOTE__: Repository and download links are __private__ pending 2025 release and research manuscript. Check back soon.
   
 <img src="img/fullPage.PNG" alt="qc" />  
 <img src="img/homePage.PNG" alt="qc" />  
