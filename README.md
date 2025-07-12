@@ -3,7 +3,8 @@ An easy-to-use interactive pipeline to assess the performance of LC-MS/MS instru
 Suitable for proteomics, metabolomics and lipidomics workflows.  
 
 Check out the demo version <a href="https://analyst-suites.org/apps/qc-demo/" target="_blank" rel="noopener noreferrer">here</a>
-  
+
+__NOTE__: Repository and download links are _private_ pending 2025 release and research manuscript. Chack back soon.
   
 <img src="img/fullPage.PNG" alt="qc" />  
 <img src="img/homePage.PNG" alt="qc" />  
@@ -13,12 +14,12 @@ Use the menu ![menu](img/menu-hint.PNG) at the top of this README for quick navi
 ## Installation on Windows
 To install MaSpeQC on any _Windows_ system, download and unzip the latest release from the link below, then simply run the script ___start_maspeqc_setup.bat___ as administrator from the command line. This will install all of the necessary software and dependencies to use MaSpeQC. 
 
-<a href="https://github.com/MonashProteomics/MaSpeQC/archive/refs/tags/1.0.2.zip">MaSpeQC Zip Download</a>
+<a href="#">MaSpeQC Zip Download</a>
 
 ## Installation on Linux or MacOS
 To install MaSpeQC on any _Linux_ or _MacOS_ system, download and unzip the latest release from the link below. 
 
-<a href="https://github.com/MonashProteomics/MaSpeQC/archive/refs/tags/1.0.2.tar.gz">MaSpeQC Tar Download</a>
+<a href="#">MaSpeQC Tar Download</a>
 
 Then add the following software into a directory named _Software_ in the main directory. 
 
