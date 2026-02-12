@@ -3,23 +3,36 @@ An easy-to-use interactive pipeline to assess the performance of LC-MS/MS instru
 Suitable for proteomics, metabolomics and lipidomics workflows.  
 
 Check out the demo version <a href="https://analyst-suites.org/apps/qc-demo/" target="_blank" rel="noopener noreferrer">here</a>
-
-__NOTE__: Repository and download links are __private__ pending 2025 release and research manuscript. Check back soon.
   
-<img src="img/fullPage.PNG" alt="qc" />  
-<img src="img/homePage.PNG" alt="qc" />  
-
+![fullPage](img/fullPage.PNG)
+![homePage](img/homePage.PNG)
+ 
 Use the menu ![menu](img/menu-hint.PNG) at the top of this README for quick navigation.
 
 ## Installation on Windows
-To install MaSpeQC on any _Windows_ system, download and unzip the latest release from the link below, then simply run the script ___start_maspeqc_setup.bat___ as administrator from the command line. This will install all of the necessary software and dependencies to use MaSpeQC. 
+To install MaSpeQC on any _Windows_ system, download and unzip the latest release from the link below, then simply run the script ___start_maspeqc_setup.bat___ as administrator from the command line. This will set up and enable MaSpeQC for use. 
 
-<a href="#">MaSpeQC Zip Download</a>
+<a href="https://github.com/MonashProteomics/MaSpeQC/archive/refs/tags/1.0.4.zip">MaSpeQC Zip Download</a>
+
+## Software Licenses
+The installation script for MaSpeQC will download and install all of the necessary software and dependencies required. Linked below are the licenses for all of the software MaSpeQC will install. 
+Please read carefully these licenses before installing and using MaSpeQC.  
+
+- <a href="https://dev.mysql.com/doc/refman/5.7/en/preface.html">MySQL Reference Manual</a>
+  	- <a href="https://downloads.mysql.com/docs/licenses/mysqld-5.7-gpl-en.pdf">MySQL Licensing Information User Manual</a>
+- <a href="https://github.com/nodejs/node?tab=readme-ov-file#license">Node JS License Information</a>
+	- <a href="https://github.com/nodejs/node/blob/main/LICENSE">Node JS License</a>
+- <a href="https://docs.python.org/3/license.html">Python License</a>
+- <a href="https://github.com/mzmine/mzmine2#license">mzMine2 License Information</a>
+	- <a href="https://github.com/mzmine/mzmine2/blob/master/LICENSE.txt">mzMine2 License</a>
+- <a href="https://github.com/cwenger/Morpheus/blob/master/LICENSE.txt">Morpheus License</a>
+- <a href="https://github.com/philr/bzip2-windows/blob/master/LICENSE">bzip2 License</a>
+- <a href="https://proteowizard.sourceforge.io/licenses.html">ProteoWizard License</a>
 
 ## Installation on Linux or MacOS
 To install MaSpeQC on any _Linux_ or _MacOS_ system, download and unzip the latest release from the link below. 
 
-<a href="#">MaSpeQC Tar Download</a>
+<a href="https://github.com/MonashProteomics/MaSpeQC/archive/refs/tags/1.0.4.tar.gz">MaSpeQC Tar Download</a>
 
 Then add the following software into a directory named _Software_ in the main directory. 
 
@@ -57,8 +70,10 @@ You can now configure MaSpeQC by running `npm start --setup` and opening a brows
 
 ## Additional Installation Instructions for Thermo Fisher Scientific Instruments Only
 In order to process the pressure metrics and profiles which are a feature for Thermo Fisher Scientific instruments, the standard libraries for raw file access provided by Thermo Fisher Scientific <a href="https://github.com/thermofisherlsms/RawFileReader/">here</a> need to be included in MaSpeQC.  
+
+__NOTE__: The RawFileReader libraries are made available by Thermo Fisher Scientific under license and must not be redistributed. Please read the license carefully before using.
   
-Firstly, download the available libraries as a zip file from <a href="https://github.com/thermofisherlsms/RawFileReader/archive/refs/heads/main.zip">here</a>, extract the zip file, and read the license.  
+Firstly, download the available libraries as a zip file from <a href="https://github.com/thermofisherlsms/RawFileReader/archive/refs/heads/main.zip">here</a> and extract the zip file.  
 
 Then, navigate to the folder (`Libs/Net471`, `Libs/NetCore/Net5` or `Libs/NetCore/Net8`) for the .NET environment (`.NET Framework` or `.NET Core`) that is installed on the system and copy the 4 _ThermoFisher_ dll files to the __mpmf-pipeline__ folder in MaSpeQC. On most systems `.NET Framework` or `.NET Core` are installed by default, and `.NET Core` is backward compatible to `.NET Framework`. Thus it is very likely that the dll files from `Libs/Net471` work on your system.  
 
@@ -119,6 +134,8 @@ For more information see https://dev.mysql.com/doc/refman/8.4/en/windows-start-s
 Consult the MySQL documentation for instructions on starting a database server for your system.  
 https://dev.mysql.com/doc/mysql-getting-started/en/#mysql-getting-started-installing
 
+Linux users can also use the files __startLinuXMySQL.sh__ and __stopLinuXMySQL.sh__ to managage the database server.
+
 ## File Formats and Directory Structure
 The raw QC input files are required to be stored in __instrument_name__ (defined in configuration) folders in the input folder specified during configuration.
  ```
@@ -161,7 +178,7 @@ To start the MaSpeQC server:
 - Open a console window, navigate to the _mpmf-server_ directory.
 - Type `npm start`
 - Windows users can run __startMaSpeQCUI.bat__ located in the  _mpmf-server_ directory to start the server.
-- Linux users can run __startMaSpeQCUI.sh__ located in the  _mpmf-server_ directory to start the server.
+- Linux users can run __startLinuxMaSpeQCUI.sh__ located in the  _mpmf-server_ directory to start the server.
 - __NOTE__: An attempt will be made to establish a _https_ connection, however if this fails a _http_ connection is established. Modify the location of certificate/key in the _www_ file to establish a _https_ connection.
   
 Open a browser window at your _localhost_ to start using MaSpeQC
@@ -232,38 +249,25 @@ All pressure metrics are derived from the pressure profile displayed in the top 
 ## Controls
 All charts can be navigated and updated via the controls and menus. The __date controls__ at the top of the page can be used to switch between quality control runs.  
   
-<div style='display:flex;justify-content:center;'>    
-<img src="img/dateControls.png" alt="summary"/>
-</div>
-</br>
+![dateControls](img/dateControls.png)
 
 The __input components__ to the left of the chart area can be used to add/remove inputs from all of the charts. _Hold Ctrl_ when clicking on a component name to view that component individually. An __accordion menu__ is available from the chart controls to change between metrics. This will remain open and can be positioned anywhere on the page.
 
-</br>
-</br>
-<div style='display:flex;justify-content:center;'>    
-<img src="img/compModalImg.PNG" alt="summary" width="30%" style="diplay:inline;"/>
-<img src="img/menuModalImg.PNG" alt="summary" width="40%" style="diplay:inline;"/>
-</div>
+![compModalImg](img/compModalImg.PNG)
+![menuModalImg](img/menuModalImg.PNG)
 
 The chart controls at the top of each chart can be used to change between time scales, and to select the number of runs displayed on a chart (where applicable).  
   
-<div style='display:flex;justify-content:center;'>    
-<img src="img/top-controls.PNG" alt="summary" width="100%" style="diplay:inline;"/>
-</div>  
-</br>
-</br>
+![top-controls](img/top-controls.PNG)
+
 The chart controls at the bottom of each chart can be used to change between the different chart types.  
- </br> 
- </br>
-<div style='display:flex;justify-content:center;'>    
-<img src="img/bottom-controls.PNG" alt="summary" width="100%" style="diplay:inline;"/>
-</div> 
+
+![bottom-controls](img/bottom-controls.PNG)
 
 ## Charts
 
 ### Summary
-<img src="img/summaryDark.png" alt="summary" />  
+![summaryDark](img/summaryDark.png)
   
 A __network chart__ summarises all identification-free and identification-based metrics and reports the average metric value of the selected input components. 
 The length of each edge is determined by how far that input component is from its optimal value. Nodes with optimal readings will rest against their metric node.  
@@ -275,8 +279,8 @@ The length of each edge is determined by how far that input component is from it
 - Click on an input node to highlight it in all metrics. Click again to remove highlight.
 - The date controls will animate the summary chart by moving the nodes allowing comparison between runs.  
 
-### Line Charts  
-<img src="img/linechartDark.png" alt="line"/>  
+### Line Charts    
+![linechartDark](img/linechartDark.png)
   
 __Line charts__ show metric values over time for each of the selected input components. Shaded areas represent threshold breaches where applicable.
 
@@ -294,8 +298,8 @@ __Line charts__ show metric values over time for each of the selected input comp
 - Double click anywhere to reset the chart.
 
 ### Stream Graph  
-<img src="img/streamDark.png" alt="line"/>
-<img src="img/streamExpandDark.png" alt="line"/>  
+![streamDark](img/streamDark.png)
+![streamExpandDark](img/streamExpandDark.png)
       
 __Stream graphs__ show metric values over time for each of the selected input components. They can be viewed as stacked area charts where the y-axis shows accumulated absolute totals, or as 100% stacked area charts where the y-axis shows the percentage of the total readings.
 
@@ -310,7 +314,7 @@ __Stream graphs__ show metric values over time for each of the selected input co
 - Click on a stream to reposition it as the top stream (identification-based metrics only).
 
 ### Parallel Graph  
-<img src="img/parallelDark.png" alt="line"/>  
+![parallelDark](img/parallelDark.png)
      
 __Parallel graphs__ show all of the metrics (identification-free or identification-based) on the one chart for the selected components. The axes are centered around their optimal values where applicable. 
 
@@ -319,8 +323,8 @@ __Parallel graphs__ show all of the metrics (identification-free or identificati
 - Click on the axes to focus the input components for that metric. Click again to reset.
 - Hover over a line to highlight that component across all metrics.
 
-### Box Plots
-<img src="img/boxplot2.png" alt="line"/>  
+### Box Plots 
+![boxplot2](img/boxplot2.png)
   
 __Box plots__ show a metric value on the display date (circle) in relation to its median and interquartile range. Shaded areas represent threshold breaches where applicable.
 
@@ -332,8 +336,8 @@ __Box plots__ show a metric value on the display date (circle) in relation to it
 - Hover over a circle for the current run details.
 - Hover over a box for the box stats.
 
-### Heat Maps
-<img src="img/heatmapDark.png" alt="line"/>  
+### Heat Maps 
+![boxplot2](img/heatmapDark.png)
   
 Each column of a __heat map__ shows an individual component over time for that metric, and each row shows an individual QC run.
 
@@ -346,7 +350,7 @@ Each column of a __heat map__ shows an individual component over time for that m
 - NOTE: The maximum number of runs viewable on a heat map is 40.
 	
 ### Ridge Lines
-<img src="img/ridgeDark.png" alt="line"/>  
+![ridgeDark](img/ridgeDark.png)
   
 __Ridge lines__ show the chromatograms of the selected components on one chart ordered by their expected retention time. The heights of the peaks are normalised by default.
 
@@ -357,10 +361,10 @@ __Ridge lines__ show the chromatograms of the selected components on one chart o
 
 
 ### Chromatograms
-<img src="img/chromatogram.PNG" alt="line" width="30%"/>  
-<img src="img/chromModalImg.PNG" alt="line" width="30%"/>
-</br>
-</br>
+![chromatogram](img/chromatogram.PNG)  
+  
+![chromModalImg](img/chromModalImg.PNG)
+
 
 Click on a component name to view the __chromatogram__ for that component on the date shown. Chromatograms can also be updated from the charts when component nodes are clicked.
 
@@ -372,8 +376,9 @@ Click on a component name to view the __chromatogram__ for that component on the
 
 
 ### Pressure Profiles (Thermo Scientific Only)
-<img src="img/pressure.PNG" alt="line" width="30%"/>  
-<img src="img/pressureModalImg.PNG" alt="line" width="30%"/>
+![pressure](img/pressure.PNG)  
+  
+![pressureModalImg](img/pressureModalImg.PNG)
   
 For Thermo Scientific instrumentation, a __pressure profile__ will be displayed at the top right of the page.
 
@@ -388,7 +393,49 @@ For Thermo Scientific instrumentation, a __pressure profile__ will be displayed 
 Users can download the package from https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist?view=msvc-170 and install it.
 - The system creates its own check files (METABOLOMICS.txt, PROTEOMICS.txt) when processing. These can linger in the __mpmf-pipeline__ directory if processing is terminated early. Remove these from the directory before processing again.
 
+## Uninstalling MaSpeQC on Windows
+
+__Warning:__ When following these steps you will loose all QC data you have generated with MaSpeQC.
+
+-  Uninstall Python 3.10.11 first to avoid any remains of the Python installation required by MaSpeQC.
+
+1)  Click on "Start"
+2)  Start typing "Apps and Features" and click on "Apps and Features"
+3)  Search for "Python 3.10.11" or scroll down to "Python 3.10.11"
+4)  Click on "Python 3.10.11" and click on "Uninstall" (in case there is more than one "Python 3.10.11" make sure to select the one related to MaSpeQC)
+
+- Delete the folder MaSpeQC.
+
+## Copyright Information
+
+MaSpeQC - Quality control software for LC-MS/MS instrumentation
+
+Copyright (C) 2018-2025  Simon Caven  
+Copyright (C) 2020-2025  Monash University  
+Copyright (C) 2022-2025  University of Applied Sciences Mittweida  
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published
+by the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+A copy of the GNU Affero General Public License can be found from the link at the top of this page.
+
+## Publication Information
+
+__MaSpeQC: An easy-to-use Interactive Pipeline to Assess the Performance of LC-MS/MS Instrumentation__  
+Simon J. Caven, Christopher K. Barlow, Robert J. A. Goode, Scott A. Blundell, Hossein Valipour Kahrood, Haijian Zhang, Anup D. Shah, Bosco K. Ho, Michael Wybrow, Tobias Czauderna, and Ralf B. Schittenhelm  
+_Journal of Proteome Research Article ASAP_  
+DOI: <a href="https://pubs.acs.org/doi/10.1021/acs.jproteome.5c00869" target="_blank">10.1021/acs.jproteome.5c00869</a>  
+
 ## Help and Support
 - Consult the __User Guides__ from the navigation menu for UI and common use cases.
 	- https://youtu.be/_4T2WQHC5SY (Configuration)
 	- https://youtu.be/wXOK1BTWMlE (Charts)
+
+
